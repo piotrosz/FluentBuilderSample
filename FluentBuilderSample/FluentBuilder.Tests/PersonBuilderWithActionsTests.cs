@@ -20,10 +20,14 @@ namespace FluentBuilder.Tests
             result.LastName.Should().Be(lastName);
         }
 
+        [Fact]
         public void ShouldBuildEmptyPerson()
         {
             var result = new PersonBuilderWithActions()
                 .Build();
+
+            result.FirstName.Should().BeNull();
+            result.LastName.Should().BeNull();
         }
     }
 }

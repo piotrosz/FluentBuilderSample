@@ -6,18 +6,20 @@ namespace FluentBuilder.Tests
     public class PersonBuilderTests
     {
         [Fact]
-        public void ShouldBuildPersonWithFirstNameAndLastName()
+        public void ShouldBuildPersonWithFirstNameAndLastNameAndAge()
         {
             const string firstName = "Jan";
             const string lastName = "Kowalski";
+            const int age = 67;
 
-            var result = new PersonBuilder()
-                .WithFirstName(firstName)
+            var result = new PersonBuilder(firstName)
                 .WithLastName(lastName)
-                .Build();
+                .OfAge(67)
+                .Person;
 
             result.FirstName.Should().Be(firstName);
             result.LastName.Should().Be(lastName);
+            result.Age.Should().Be(age);
         }
     }
 }

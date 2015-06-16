@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FluentBuilder
 {
-    public class PersonBuilderWithActions : IFluentInterface
+    public class PersonBuilderWithActions
     {
         private readonly Stack<Action<Person>> actions;
 
@@ -26,15 +26,13 @@ namespace FluentBuilder
 
         public Person Build()
         {
-            var person = new Person();
-
-            do
+            var person = Person.Empty;
+            
+            while (this.actions.Count > 0)
             {
                 this.actions.Pop().Invoke(person);
-            }
-            while (actions.Count > 0);
+            };
             
-
             return person;
         }
     }

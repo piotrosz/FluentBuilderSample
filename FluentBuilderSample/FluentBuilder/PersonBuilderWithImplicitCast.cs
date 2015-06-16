@@ -1,6 +1,6 @@
 ﻿namespace FluentBuilder
 {
-    public class PersonBuilderWithImplicitCast : IFluentInterface
+    public class PersonBuilderWithImplicitCast
     {
         private string firstName;
         private string lastName;
@@ -19,11 +19,10 @@
 
         public static implicit operator Person(PersonBuilderWithImplicitCast builder)
         {
-            return new Person
-            {
-                FirstName = builder.firstName,
-                LastName = builder.lastName
-            };
+            var person = Person.Empty;
+            person.FirstName = builder.firstName;
+            person.LastName = builder.lastName;
+            return person;
         }
     }
 }

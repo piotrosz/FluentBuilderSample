@@ -2,19 +2,18 @@
 
 namespace FluentBuilder
 {
-    public class PersonBuilder : IFluentInterface
+    public class PersonBuilder
     {
         private Lazy<Person> person;
 
-        public PersonBuilder()
+        public PersonBuilder(string firstName)
         {
-            this.person = new Lazy<Person>(() => new Person());
-        }
-
-        public PersonBuilder WithFirstName(string firstName)
-        {
-            this.person.Value.FirstName = firstName;
-            return this;
+            this.person = new Lazy<Person>(() => 
+                {
+                    var p = Person.Empty;
+                    p.FirstName = firstName;
+                    return p;
+                });
         }
 
         public PersonBuilder WithLastName(string lastName)
@@ -23,9 +22,18 @@ namespace FluentBuilder
             return this;
         }
 
-        public Person Build()
+        public PersonBuilder OfAge(int age)
         {
-            return this.person.Value;
+            if(age < 0)
+            {
+                throw new ArgumentOutOfRangeException("age", "age cannot be negative");
+            }
+
+            this.person.Value.Age = age;
+
+            return this;
         }
+
+        public Person Person => this.person.Value;
     }
 }
