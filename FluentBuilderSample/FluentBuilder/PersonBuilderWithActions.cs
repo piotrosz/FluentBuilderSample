@@ -26,7 +26,7 @@ namespace FluentBuilder
 
         public Person Build()
         {
-            var person = Person.Empty;
+            var person = Person.CreateEmpty();
             
             while (this.actions.Count > 0)
             {
