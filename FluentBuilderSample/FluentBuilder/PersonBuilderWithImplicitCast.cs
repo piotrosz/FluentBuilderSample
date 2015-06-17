@@ -19,7 +19,7 @@
 
         public static implicit operator Person(PersonBuilderWithImplicitCast builder)
         {
-            var person = Person.Empty;
+            var person = Person.CreateEmpty();
             person.FirstName = builder.firstName;
             person.LastName = builder.lastName;
             return person;
