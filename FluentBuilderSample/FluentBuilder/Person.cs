@@ -12,6 +12,6 @@
 
         public bool IsActive { get; set; } = false;
 
-        public static Person Empty => new Person();
+        public static Person CreateEmpty() => new Person();
     }
 }
