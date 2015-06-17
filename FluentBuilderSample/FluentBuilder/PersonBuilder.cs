@@ -10,9 +10,9 @@ namespace FluentBuilder
         {
             this.person = new Lazy<Person>(() => 
                 {
-                    var p = Person.Empty;
-                    p.FirstName = firstName;
-                    return p;
+                    var person = Person.CreateEmpty();
+                    person.FirstName = firstName;
+                    return person;
                 });
         }
 
