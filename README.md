@@ -1,2 +1,3 @@
 # FluentBuilderSample
-Fluent builder
+
+Fluent builder pattern experiments.
